@@ -1,26 +1,9 @@
-import './style.scss'
-import styles from './example.module.css'
-import favicon from '/vite.svg'
+import App from './App.vue'
+import { createApp } from 'vue'
 
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+import('./async.js').then(mod => {
+  console.log(mod)
+})
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${favicon}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
-
-setupCounter(document.querySelector('#counter'))
+const app = createApp(App)
+app.mount('#app')
